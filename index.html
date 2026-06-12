@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immobilien-Ratgeber &ndash; Krischer Immobilien</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ki-gruen:    #6DB33F;
+    --ki-gruen-dk: #559030;
+    --ki-schwarz:  #1A1A1A;
+    --ki-weiss:    #FFFFFF;
+    --ki-grau:     #F5F5F5;
+    --ki-grau-txt: #666666;
+    --ki-border:   #E0E0E0;
+  }
+
+  body {
+    font-family: 'Arial', 'Helvetica Neue', sans-serif;
+    background: var(--ki-weiss);
+    color: var(--ki-schwarz);
+    padding: 48px 20px 40px;
+  }
+
+  .ki-header {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+
+  .ki-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ki-gruen);
+    margin-bottom: 14px;
+  }
+
+  .ki-label::before, .ki-label::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--ki-gruen);
+  }
+
+  .ki-divider {
+    width: 48px;
+    height: 3px;
+    background: var(--ki-gruen);
+    margin: 0 auto 16px;
+  }
+
+  h1 {
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-weight: 700;
+    color: var(--ki-schwarz);
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+
+  .ki-subtitle {
+    font-size: 15px;
+    color: var(--ki-grau-txt);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Grid */
+  .ki-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+  }
+
+  @media (max-width: 860px) { .ki-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 540px) { .ki-grid { grid-template-columns: 1fr; } }
+
+  .ki-grid .ki-card:first-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 55% 1fr;
+    min-height: 280px;
+  }
+
+  .ki-grid .ki-card:first-child .ki-img { border-radius: 4px 0 0 4px; aspect-ratio: unset; height: 100%; }
+  .ki-grid .ki-card:first-child .ki-body { border-radius: 0 4px 4px 0; padding: 32px 36px; display: flex; flex-direction: column; justify-content: center; }
+  .ki-grid .ki-card:first-child .ki-title { font-size: clamp(17px,2vw,23px); margin-bottom: 12px; }
+  .ki-grid .ki-card:first-child .ki-excerpt { display: block; }
+
+  @media (max-width: 640px) {
+    .ki-grid .ki-card:first-child { grid-column: 1; grid-template-columns: 1fr; min-height: unset; }
+    .ki-grid .ki-card:first-child .ki-img { border-radius: 4px 4px 0 0; height: 200px; }
+    .ki-grid .ki-card:first-child .ki-body { border-radius: 0 0 4px 4px; padding: 22px; }
+  }
+
+  /* Karte */
+  .ki-card {
+    background: var(--ki-weiss);
+    border: 1px solid var(--ki-border);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow .2s, transform .2s, border-color .2s;
+  }
+
+  .ki-card:hover {
+    box-shadow: 0 6px 28px rgba(0,0,0,.09);
+    transform: translateY(-3px);
+    border-color: var(--ki-gruen);
+  }
+
+  .ki-img {
+    position: relative;
+    overflow: hidden;
+    background: var(--ki-grau);
+    aspect-ratio: 16/9;
+  }
+
+  .ki-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform .4s;
+  }
+
+  .ki-card:hover .ki-img img { transform: scale(1.04); }
+
+  .ki-placeholder {
+    width: 100%; height: 100%; min-height: 150px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg,#f0f0f0,#e0e0e0);
+    font-size: 48px;
+  }
+
+  .ki-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--ki-gruen); color: var(--ki-weiss);
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 4px 9px; border-radius: 2px; line-height: 1;
+  }
+
+  .ki-body { padding: 20px; }
+
+  .ki-meta {
+    font-size: 12px; color: #999; margin-bottom: 9px;
+    display: flex; align-items: center; gap: 7px;
+  }
+
+  .ki-dot { width: 3px; height: 3px; border-radius: 50%; background: #ccc; flex-shrink: 0; }
+
+  .ki-title {
+    font-size: 15px; font-weight: 700; color: var(--ki-schwarz);
+    margin: 0 0 14px; line-height: 1.4;
+  }
+
+  .ki-excerpt {
+    font-size: 13px; color: var(--ki-grau-txt);
+    line-height: 1.65; margin: 0 0 20px; display: none;
+  }
+
+  .ki-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--ki-gruen);
+    background: none; border: none; border-bottom: 1px solid transparent;
+    cursor: pointer; font-family: inherit; padding-bottom: 1px;
+    transition: gap .2s, border-color .2s;
+  }
+
+  .ki-btn::after { content: '\2192'; font-size: 13px; }
+  .ki-card:hover .ki-btn { gap: 9px; border-bottom-color: var(--ki-gruen); }
+
+  /* CTA */
+  .ki-cta { text-align: center; }
+  .ki-cta a {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    background: var(--ki-gruen); color: var(--ki-weiss);
+    border: 2px solid var(--ki-gruen); padding: 13px 32px;
+    text-decoration: none; border-radius: 3px;
+    transition: background .2s, border-color .2s;
+  }
+  .ki-cta a:hover { background: var(--ki-schwarz); border-color: var(--ki-schwarz); }
+
+  /* Modal */
+  .ki-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.65); z-index: 9999;
+    align-items: center; justify-content: center;
+    padding: 16px; backdrop-filter: blur(3px);
+  }
+  .ki-overlay.open { display: flex; }
+
+  .ki-modal {
+    background: var(--ki-weiss); border-radius: 6px;
+    max-width: 700px; width: 100%; max-height: 88vh;
+    overflow-y: auto; box-shadow: 0 24px 64px rgba(0,0,0,.25);
+    position: relative; animation: ki-in .2s ease;
+  }
+
+  @keyframes ki-in { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+  .ki-mhead {
+    padding: 28px 32px 20px; border-bottom: 1px solid var(--ki-border);
+    position: sticky; top: 0; background: var(--ki-weiss); z-index: 1;
+  }
+
+  .ki-mcat {
+    display: inline-block; background: var(--ki-gruen); color: var(--ki-weiss);
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 4px 9px; border-radius: 2px; margin-bottom: 10px;
+  }
+
+  .ki-mtitle {
+    font-size: clamp(19px,2.5vw,26px); font-weight: 700; color: var(--ki-schwarz);
+    line-height: 1.25; margin: 0 36px 8px 0;
+  }
+
+  .ki-mmeta { font-size: 12px; color: #999; display: flex; gap: 7px; align-items: center; }
+
+  .ki-mclose {
+    position: absolute; top: 24px; right: 24px;
+    background: none; border: none; cursor: pointer;
+    color: #999; font-size: 22px; line-height: 1; padding: 4px;
+    transition: color .15s; font-family: inherit;
+  }
+  .ki-mclose:hover { color: var(--ki-schwarz); }
+
+  .ki-mbody {
+    padding: 24px 32px 32px; font-size: 15px;
+    line-height: 1.75; color: #333;
+  }
+  .ki-mbody p { margin-bottom: 16px; }
+  .ki-mbody p:last-child { margin-bottom: 0; }
+
+  .ki-mfoot {
+    border-top: 1px solid var(--ki-border); padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 10px;
+  }
+
+  .ki-mfoot a {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--ki-gruen); color: var(--ki-weiss);
+    text-decoration: none; font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 11px 22px; border-radius: 3px; transition: background .2s;
+  }
+  .ki-mfoot a:hover { background: var(--ki-gruen-dk); }
+  .ki-mfoot span { font-size: 11px; color: #bbb; }
+
+  @media (max-width: 480px) {
+    .ki-mhead, .ki-mbody, .ki-mfoot { padding-left: 18px; padding-right: 18px; }
+    .ki-mclose { right: 12px; top: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="ki-header">
+  <div class="ki-label">Ratgeber &amp; Markt</div>
+  <div class="ki-divider"></div>
+  <h1>Immobilien-Wissen aus D&uuml;sseldorf</h1>
+  <p class="ki-subtitle">Aktuelle Marktberichte, Tipps f&uuml;r K&auml;ufer und Verk&auml;ufer sowie alles Wissenswerte rund um Immobilien in D&uuml;sseldorf.</p>
+</header>
+
+<div class="ki-grid" id="ki-grid"></div>
+
+<div class="ki-cta">
+  <a href="https://www.krischer-immobilien.de/kontakt">Jetzt Kontakt aufnehmen</a>
+</div>
+
+<!-- Modal -->
+<div class="ki-overlay" id="ki-overlay">
+  <div class="ki-modal">
+    <div class="ki-mhead">
+      <span class="ki-mcat" id="m-cat"></span>
+      <h2 class="ki-mtitle" id="m-title"></h2>
+      <div class="ki-mmeta" id="m-meta"></div>
+      <button class="ki-mclose" id="m-close">&#x2715;</button>
+    </div>
+    <div class="ki-mbody" id="m-body"></div>
+    <div class="ki-mfoot">
+      <a href="https://www.krischer-immobilien.de/kontakt">Jetzt Kontakt aufnehmen &#8594;</a>
+      <span>Alle Angaben ohne Gew&auml;hr &middot; Krischer Immobilien</span>
+    </div>
+  </div>
+</div>
+
+<script>
+var ARTIKEL = [
+  {
+    id:'1',date:'12. Juni 2026',datetime:'2026-06-12',category:'Marktbericht',emoji:'🏙️',
+    title:'Immobilienmarkt Düsseldorf 2026: Preise, Trends und Ausblick',
+    excerpt:'Der Düsseldorfer Immobilienmarkt bleibt 2026 robust – was Käufer und Verkäufer jetzt wissen müssen.',
+    content:'Der Immobilienmarkt in Düsseldorf zeigt sich auch 2026 von einer stabilen Seite. Trotz der veränderten Zinslandschaft der vergangenen Jahre hat die Nachfrage nach Wohnimmobilien in der Landeshauptstadt nicht nachgelassen.\n\nBesonders begehrt sind nach wie vor Stadtteile wie Oberkassel, Pempelfort und Golzheim. Hier treffen eine exzellente Infrastruktur, gute Schulen und eine hohe Lebensqualität auf eine begrenzte Anzahl verfügbarer Immobilien.\n\nInteressant ist die Entwicklung in aufstrebenden Stadtteilen wie Flingern und Bilk: Junge Familien und Berufstätige schätzen die Mischung aus urbanem Flair und vergleichsweise moderaten Preisen.\n\nFür Verkäufer ist 2026 ein grundsätzlich guter Zeitpunkt: Die Nachfrage übersteigt das Angebot in vielen Segmenten. Käufer sollten sich nicht unter Druck setzen lassen und eine solide Finanzierungsplanung aufstellen.\n\nKrischer Immobilien begleitet Sie als kompetenter Partner durch alle Phasen Ihrer Immobilientransaktion. Sprechen Sie uns an – wir beraten Sie gerne persönlich.',
+    readTime:'5'
+  },
+  {
+    id:'2',date:'1. Juni 2026',datetime:'2026-06-01',category:'Stadtteile',emoji:'🏘️',
+    title:'Oberkassel, Pempelfort oder Gerresheim: Düsseldorf im Vergleich',
+    excerpt:'Welcher Düsseldorfer Stadtteil passt zu Ihnen? Ein Überblick über Lage, Preise und Lebensqualität.',
+    content:'Düsseldorf ist nicht gleich Düsseldorf: Jeder Stadtteil hat seinen eigenen Charakter, seine eigenen Vorzüge und sein eigenes Preisniveau.\n\nOberkassel gilt als einer der exklusivsten Stadtteile Düsseldorfs. Villen, großzügige Altbauwohnungen und eine direkte Rheinlage machen den Stadtteil besonders attraktiv.\n\nPempelfort überzeugt mit seiner lebendigen Kulturszene, zahlreichen Cafés und Restaurants sowie einer sehr guten Anbindung an die Innenstadt.\n\nGerresheim hingegen bietet deutlich mehr Wohnfläche für das gleiche Budget. Die gute Anbindung an den öffentlichen Nahverkehr und die ruhigere Atmosphäre machen ihn besonders für Familien interessant.\n\nLassen Sie sich von Krischer Immobilien beraten, welche Lage zu Ihren Anforderungen und Ihrem Budget passt.',
+    readTime:'4'
+  },
+  {
+    id:'3',date:'20. Mai 2026',datetime:'2026-05-20',category:'Verkaufen',emoji:'📋',
+    title:'Immobilie verkaufen in Düsseldorf: 7 Fehler vermeiden',
+    excerpt:'Wer seine Immobilie in Düsseldorf verkauft, sollte diese 7 häufigen Fehler unbedingt kennen.',
+    content:'Der Verkauf einer Immobilie ist eine der größten finanziellen Entscheidungen im Leben. Damit Sie den bestmöglichen Erlös erzielen, sollten Sie typische Fehler von Anfang an vermeiden.\n\n1. Falscher Angebotspreis: Ein zu hoher Preis schreckt Interessenten ab, ein zu niedriger lässt Geld auf dem Tisch.\n\n2. Schlechte Fotos: Hochwertige Immobilienfotos sind entscheidend für den ersten Eindruck.\n\n3. Unvollständige Unterlagen: Energieausweis, Grundbuchauszug und Baubeschreibung müssen rechtzeitig vorliegen.\n\n4. Emotionale Preisvorstellung: Der persönliche Wert einer Immobilie entspricht selten dem Marktwert.\n\n5. Falsche Zielgruppe: Gezieltes Marketing spart Zeit und Nerven.\n\n6. Schlechte Vorbereitung für Besichtigungen: Ein aufgeräumtes, helles Objekt hinterlässt einen besseren Eindruck.\n\n7. Verkauf ohne Makler: Ohne Marktkenntnisse riskieren Sie einen schlechteren Preis.\n\nKrischer Immobilien unterstützt Sie von der ersten Bewertung bis zur Schlüsselübergabe.',
+    readTime:'4'
+  },
+  {
+    id:'4',date:'8. Mai 2026',datetime:'2026-05-08',category:'Finanzierung',emoji:'💶',
+    title:'Baufinanzierung 2026 in Düsseldorf: Zinsen und KfW-Förderungen',
+    excerpt:'Was hat sich bei der Baufinanzierung 2026 geändert und welche Förderprogramme gibt es?',
+    content:'Die Zinsentwicklung der letzten Jahre hat den Immobilienmarkt in Düsseldorf nachhaltig verändert. Die Konditionen haben sich 2026 stabilisiert – das erfordert sorgfältige Planung, bietet aber attraktive Chancen.\n\nGrundsätzlich gilt: Je höher das Eigenkapital, desto besser die Konditionen. Experten empfehlen mindestens 20 Prozent des Kaufpreises als Eigenkapital einzubringen.\n\nEine wichtige Rolle spielen die Förderprogramme der KfW-Bank. Besonders das Programm Wohneigentum für Familien (WEF) bietet zinsgünstige Darlehen für Familien mit Kindern.\n\nTipp: Vergleichen Sie vor dem Abschluss eines Darlehens mehrere Angebote und lassen Sie sich von einem unabhängigen Finanzierungsberater begleiten.\n\nBei Fragen rund um die Finanzierung Ihrer Traumimmobilie in Düsseldorf helfen wir von Krischer Immobilien Ihnen gerne weiter.',
+    readTime:'4'
+  }
+];
+
+var EMOJI = {Marktbericht:'🏙️',Kaufen:'🔑',Verkaufen:'📋',Stadtteile:'🏘️',Finanzierung:'💶',Ratgeber:'📊',Vermietung:'🏢'};
+var grid = document.getElementById('ki-grid');
+var overlay = document.getElementById('ki-overlay');
+var mCat = document.getElementById('m-cat');
+var mTitle = document.getElementById('m-title');
+var mMeta = document.getElementById('m-meta');
+var mBody = document.getElementById('m-body');
+var mClose = document.getElementById('m-close');
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function render(liste) {
+  grid.innerHTML = '';
+  liste.slice(0,4).forEach(function(a,i) {
+    var emoji = a.emoji || EMOJI[a.category] || '🏠';
+    var bildHTML = a.imageUrl
+      ? '<img src="'+esc(a.imageUrl)+'" alt="'+esc(a.title)+'" loading="lazy">'
+      : '<div class="ki-placeholder">'+emoji+'</div>';
+    var card = document.createElement('article');
+    card.className = 'ki-card';
+    card.innerHTML =
+      '<div class="ki-img">'+bildHTML+'<span class="ki-badge">'+esc(a.category)+'</span></div>'+
+      '<div class="ki-body">'+
+        '<div class="ki-meta"><time datetime="'+esc(a.datetime)+'">'+esc(a.date)+'</time><span class="ki-dot"></span><span>'+esc(a.readTime)+' Min.</span></div>'+
+        '<h3 class="ki-title">'+esc(a.title)+'</h3>'+
+        (i===0?'<p class="ki-excerpt">'+esc(a.excerpt)+'</p>':'')+
+        '<button class="ki-btn" type="button">Weiterlesen</button>'+
+      '</div>';
+    card.addEventListener('click', function(){ openModal(a); });
+    grid.appendChild(card);
+  });
+}
+
+function openModal(a) {
+  mCat.textContent = a.category;
+  mTitle.textContent = a.title;
+  mMeta.innerHTML = '<time datetime="'+esc(a.datetime)+'">'+esc(a.date)+'</time><span class="ki-dot"></span><span>'+esc(a.readTime)+' Min. Lesezeit</span>';
+  mBody.innerHTML = (a.content||a.excerpt||'').split('\n\n').filter(function(p){return p.trim();}).map(function(p){return '<p>'+esc(p.trim())+'</p>';}).join('');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  mClose.focus();
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+mClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', function(e){ if(e.target===overlay) closeModal(); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+// Sofort Starter-Artikel anzeigen
+render(ARTIKEL);
+
+// Im Hintergrund neuere Artikel von GitHub laden
+fetch('articles.json')
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if(d.articles && d.articles.length) render(d.articles);
+  })
+  .catch(function(){});
+</script>
+</body>
+</html>
