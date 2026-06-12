@@ -7,12 +7,12 @@ import random
 import os
 import sys
 
-GROQ_API_KEY = os.environ.get('GROQ_API_KEY', '').strip()
-if not GROQ_API_KEY:
-    print("FEHLER: GROQ_API_KEY ist nicht gesetzt")
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', '').strip()
+if not GEMINI_API_KEY:
+    print("FEHLER: GEMINI_API_KEY ist nicht gesetzt")
     sys.exit(1)
 
-print(f"API Key vorhanden: {GROQ_API_KEY[:8]}...")
+print(f"API Key vorhanden: {GEMINI_API_KEY[:6]}...")
 
 ARTIKEL_DATEI = 'articles.json'
 
@@ -89,33 +89,25 @@ def generiere_bild_url(bild_prompt):
 
 def api_aufruf(prompt):
     payload = json.dumps({
-        "model": "llama-3.3-70b-versatile",
-        "messages": [
-            {
-                "role": "system",
-                "content": "Du bist ein professioneller Immobilien-Texter für Krischer Immobilien in Düsseldorf. Du schreibst ausschließlich auf Deutsch."
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
-        "temperature": 0.8,
-        "max_tokens": 1400
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "temperature": 0.85,
+            "maxOutputTokens": 1400
+        }
     }).encode('utf-8')
 
-    url = "https://api.groq.com/openai/v1/chat/completions"
+    url = (
+        "https://generativelanguage.googleapis.com/v1beta/models/"
+        f"gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
+    )
 
     req = urllib.request.Request(
         url,
         data=payload,
-        headers={
-            'Content-Type': 'application/json',
-            'Authorization': f'Bearer {GROQ_API_KEY}'
-        }
+        headers={'Content-Type': 'application/json'}
     )
 
-    print("Sende Anfrage an Groq API...")
+    print("Sende Anfrage an Gemini API...")
     try:
         with urllib.request.urlopen(req, timeout=90) as resp:
             result = json.loads(resp.read().decode('utf-8'))
@@ -123,7 +115,7 @@ def api_aufruf(prompt):
             return result
     except urllib.error.HTTPError as e:
         body = e.read().decode('utf-8')
-        print(f"HTTP Fehler {e.code}: {body[:300]}")
+        print(f"HTTP Fehler {e.code}: {body[:400]}")
         raise
 
 
@@ -150,8 +142,7 @@ def generiere_artikel():
     )
 
     result = api_aufruf(prompt)
-
-    raw = result['choices'][0]['message']['content'].strip()
+    raw = result['candidates'][0]['content']['parts'][0]['text'].strip()
 
     if '```' in raw:
         raw = raw.split('```')[1]
