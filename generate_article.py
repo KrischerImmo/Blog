@@ -6,6 +6,7 @@ import datetime
 import random
 import os
 import sys
+import time
 
 GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', '').strip()
 if not GEMINI_API_KEY:
@@ -67,13 +68,6 @@ MONATE_DE = {
     9: "September", 10: "Oktober", 11: "November", 12: "Dezember"
 }
 
-MODELLE = [
-    "gemini-1.5-flash-latest",
-    "gemini-1.5-flash",
-    "gemini-2.0-flash",
-    "gemini-1.5-pro-latest",
-]
-
 
 def datum_de(d):
     return f"{d.day}. {MONATE_DE[d.month]} {d.year}"
@@ -88,7 +82,7 @@ def generiere_bild_url(bild_prompt):
     )
 
 
-def api_aufruf(modell, prompt):
+def api_aufruf(prompt, versuche=3):
     payload = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
@@ -97,31 +91,35 @@ def api_aufruf(modell, prompt):
         }
     }).encode('utf-8')
 
-    for version in ["v1", "v1beta"]:
-        url = (
-            f"https://generativelanguage.googleapis.com/{version}/models/"
-            f"{modell}:generateContent?key={GEMINI_API_KEY}"
-        )
-        print(f"Versuche: {version}/models/{modell}")
+    url = (
+        "https://generativelanguage.googleapis.com/v1beta/models/"
+        f"gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
+    )
 
+    for versuch in range(1, versuche + 1):
+        print(f"API Aufruf Versuch {versuch}/{versuche}...")
         req = urllib.request.Request(
             url,
             data=payload,
             headers={'Content-Type': 'application/json'}
         )
-
         try:
             with urllib.request.urlopen(req, timeout=90) as resp:
                 result = json.loads(resp.read().decode('utf-8'))
-                print(f"Erfolgreich mit {version}/models/{modell}")
+                print("API Aufruf erfolgreich.")
                 return result
         except urllib.error.HTTPError as e:
             body = e.read().decode('utf-8')
-            print(f"  Fehler {e.code}: {body[:300]}")
-            continue
+            print(f"  HTTP Fehler {e.code}: {body[:200]}")
+            if e.code == 429 and versuch < versuche:
+                wartezeit = 60 * versuch
+                print(f"  Quote ueberschritten – warte {wartezeit} Sekunden...")
+                time.sleep(wartezeit)
+            else:
+                raise
         except Exception as e:
             print(f"  Fehler: {e}")
-            continue
+            raise
 
     return None
 
@@ -148,14 +146,10 @@ def generiere_artikel():
         '"readTime": "4"}'
     )
 
-    result = None
-    for modell in MODELLE:
-        result = api_aufruf(modell, prompt)
-        if result:
-            break
+    result = api_aufruf(prompt)
 
     if not result:
-        print("FEHLER: Alle Modelle fehlgeschlagen")
+        print("FEHLER: API Aufruf fehlgeschlagen")
         sys.exit(1)
 
     raw = result['candidates'][0]['content']['parts'][0]['text'].strip()
@@ -166,7 +160,6 @@ def generiere_artikel():
             raw = raw[4:]
     raw = raw.strip()
 
-    # JSON-Bereich extrahieren
     start = raw.find('{')
     end = raw.rfind('}') + 1
     raw = raw[start:end]
