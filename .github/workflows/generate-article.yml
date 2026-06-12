@@ -1,4 +1,4 @@
-ame: Artikel generieren
+name: Artikel generieren
 
 on:
   schedule:
