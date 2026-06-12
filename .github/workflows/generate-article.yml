@@ -2,8 +2,8 @@ name: Artikel generieren
 
 on:
   schedule:
-    - cron: '0 8 */2 * *'
-  workflow_dispatch:
+    - cron: '0 8 */2 * *'   # Alle 2 Tage um 8:00 Uhr UTC
+  workflow_dispatch:          # Manueller Start zum Testen
 
 jobs:
   generate:
@@ -22,7 +22,7 @@ jobs:
 
       - name: Artikel generieren
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python generate_article.py
 
       - name: Artikel committen und pushen
