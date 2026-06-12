@@ -1,0 +1,34 @@
+ame: Artikel generieren
+
+on:
+  schedule:
+    - cron: '0 8 */2 * *'   # Alle 2 Tage um 8:00 Uhr UTC
+  workflow_dispatch:          # Manueller Start zum Testen
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Artikel generieren
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python generate_article.py
+
+      - name: Artikel committen und pushen
+        run: |
+          git config user.name "Krischer Blog Bot"
+          git config user.email "noreply@krischer-immobilien.de"
+          git add articles.json
+          git diff --staged --quiet || git commit -m "Neuer Artikel: $(date +'%d.%m.%Y')"
+          git push
