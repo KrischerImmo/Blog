@@ -7,13 +7,6 @@ import random
 import os
 import sys
 
-GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', '').strip()
-if not GEMINI_API_KEY:
-    print("FEHLER: GEMINI_API_KEY ist nicht gesetzt")
-    sys.exit(1)
-
-print(f"API Key vorhanden: {GEMINI_API_KEY[:6]}...")
-
 ARTIKEL_DATEI = 'articles.json'
 
 THEMEN = [
@@ -88,35 +81,21 @@ def generiere_bild_url(bild_prompt):
 
 
 def api_aufruf(prompt):
-    payload = json.dumps({
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "temperature": 0.85,
-            "maxOutputTokens": 1400
-        }
-    }).encode('utf-8')
-
-    url = (
-        "https://generativelanguage.googleapis.com/v1beta/models/"
-        f"gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
-    )
+    # Pollinations Text API – kostenlos, kein API Key, kein Blocking
+    encoded = urllib.parse.quote(prompt, safe='')
+    seed = random.randint(1, 99999)
+    url = f"https://text.pollinations.ai/{encoded}?model=openai-large&seed={seed}&json=true"
 
     req = urllib.request.Request(
         url,
-        data=payload,
-        headers={'Content-Type': 'application/json'}
+        headers={'User-Agent': 'Mozilla/5.0 (compatible; KrischerImmoBot/1.0)'}
     )
 
-    print("Sende Anfrage an Gemini API...")
-    try:
-        with urllib.request.urlopen(req, timeout=90) as resp:
-            result = json.loads(resp.read().decode('utf-8'))
-            print("API Aufruf erfolgreich.")
-            return result
-    except urllib.error.HTTPError as e:
-        body = e.read().decode('utf-8')
-        print(f"HTTP Fehler {e.code}: {body[:400]}")
-        raise
+    print("Sende Anfrage an Pollinations Text API...")
+    with urllib.request.urlopen(req, timeout=120) as resp:
+        text = resp.read().decode('utf-8').strip()
+        print(f"Antwort erhalten ({len(text)} Zeichen)")
+        return text
 
 
 def generiere_artikel():
@@ -124,32 +103,26 @@ def generiere_artikel():
     heute = datetime.date.today()
 
     prompt = (
-        f"Schreibe einen professionellen Immobilien-Blogartikel auf Deutsch für Krischer Immobilien aus Düsseldorf.\n\n"
-        f"Thema: {thema['thema']}\n\n"
-        "Anforderungen:\n"
-        "- Länge: 350-420 Wörter\n"
-        "- Ton: seriös, kompetent, lokaler Bezug zu Düsseldorf\n"
-        "- Keine konkreten Preisversprechen oder Rechtsberatung\n"
-        "- Erwähne Krischer Immobilien einmal natürlich im Text\n"
-        "- Vollständig origineller Text\n"
-        "- Absätze mit Leerzeile trennen\n"
-        "- Abschluss mit kurzer Kontaktaufforderung\n\n"
-        "Antworte NUR mit einem JSON-Objekt, kein Text davor oder danach:\n"
-        '{"title": "Titel max 68 Zeichen mit Düsseldorf", '
-        '"excerpt": "Zusammenfassung als ein Satz max 155 Zeichen", '
-        '"content": "Vollständiger Artikeltext, Absätze mit \\n\\n getrennt", '
-        '"readTime": "4"}'
+        f"Schreibe einen professionellen Immobilien-Blogartikel auf Deutsch für Krischer Immobilien aus Düsseldorf. "
+        f"Thema: {thema['thema']}. "
+        "Anforderungen: 350-420 Wörter, seriöser Ton, Bezug zu Düsseldorf, keine Preisversprechen oder Rechtsberatung, "
+        "erwähne Krischer Immobilien einmal, origineller Text, Absätze mit Leerzeile trennen, "
+        "Abschluss mit Kontaktaufforderung. "
+        "Antworte NUR mit einem JSON-Objekt ohne weiteren Text: "
+        "{\"title\": \"Titel max 68 Zeichen mit Düsseldorf\", "
+        "\"excerpt\": \"Zusammenfassung ein Satz max 155 Zeichen\", "
+        "\"content\": \"Vollständiger Text Absätze mit \\n\\n getrennt\", "
+        "\"readTime\": \"4\"}"
     )
 
-    result = api_aufruf(prompt)
-    raw = result['candidates'][0]['content']['parts'][0]['text'].strip()
+    raw = api_aufruf(prompt)
 
+    # JSON extrahieren
     if '```' in raw:
         raw = raw.split('```')[1]
         if raw.startswith('json'):
             raw = raw[4:]
     raw = raw.strip()
-
     start = raw.find('{')
     end = raw.rfind('}') + 1
     raw = raw[start:end]
