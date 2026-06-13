@@ -385,7 +385,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModa
 render(ARTIKEL);
 
 // Im Hintergrund neuere Artikel von GitHub laden
-fetch('articles.json')
+fetch('articles.json?v=' + Date.now())
   .then(function(r){ return r.json(); })
   .then(function(d){
     if(d.articles && d.articles.length) render(d.articles);
