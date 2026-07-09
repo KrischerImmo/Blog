@@ -1,6 +1,18 @@
 {
-  "updated": "2026-07-07",
+  "updated": "2026-07-09",
   "articles": [
+    {
+      "id": "20260709-610",
+      "date": "9. Juli 2026",
+      "datetime": "2026-07-09",
+      "category": "Vermietung",
+      "emoji": "🏢",
+      "imageUrl": "https://image.pollinations.ai/prompt/modern%20apartment%20building%20rental%20D%C3%BCsseldorf%20Germany%20exterior%20architecture%20real%20estate?width=900&height=500&nologo=true&model=flux&seed=81945",
+      "title": "Wohnung vermieten in Düsseldorf: Tipps für erfolgreiche Vermietung",
+      "excerpt": "Als Vermieter in Düsseldorf erfolgreich sein – mit diesen Tipps finden Sie schnell gute Mieter.",
+      "content": "Düsseldorf ist ein begehrter Mietmarkt: Die Nachfrage nach Mietwohnungen übersteigt in vielen Stadtteilen das Angebot. Das klingt gut für Vermieter – doch auch hier lohnt sich eine durchdachte Strategie.\n\nSetzen Sie den Mietpreis realistisch: Eine zu hohe Miete schreckt gute Mieter ab und führt zu langen Leerstandszeiten. Orientieren Sie sich am aktuellen Mietspiegel und vergleichbaren Angeboten in Heerdt und Umgebung.\n\nInvestieren Sie in die Präsentation: Gute Fotos und eine vollständige Beschreibung der Wohnung sorgen für mehr und bessere Bewerbungen. Achten Sie auf Sauberkeit und kleine Schönheitsreparaturen vor der Besichtigung.\n\nWählen Sie Mieter sorgfältig aus: Eine Selbstauskunft, Gehaltsnachweise und eine Schufa-Auskunft sind wichtige Instrumente zur Mieterauswahl. Nehmen Sie sich die Zeit für ein persönliches Gespräch.\n\nKennen Sie Ihre Pflichten: Als Vermieter sind Sie für die Instandhaltung der Immobilie verantwortlich. Betriebskosten müssen korrekt abgerechnet werden. Informieren Sie sich über aktuelle Mietrechtsregelungen.\n\nKrischer Immobilien unterstützt Sie bei der professionellen Vermarktung und Vermietung Ihrer Immobilie in Düsseldorf. Sprechen Sie uns an – wir finden für Sie den passenden Mieter.",
+      "readTime": "4"
+    },
     {
       "id": "20260707-419",
       "date": "7. Juli 2026",
