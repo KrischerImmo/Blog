@@ -17,17 +17,12 @@ STADTTEILE = [
     "Eller", "Volmerswerth", "Hafen", "Heerdt", "Stockum"
 ]
 
-import urllib.parse
-
 def datum_de(d):
     return f"{d.day}. {MONATE_DE[d.month]} {d.year}"
 
 def bild_url(prompt):
-    seed = random.randint(1, 99999)
-    return (
-        f"https://image.pollinations.ai/prompt/{urllib.parse.quote(prompt)}"
-        f"?width=900&height=500&nologo=true&model=flux&seed={seed}"
-    )
+    seed = random.randint(1, 1000)
+    return f"https://picsum.photos/seed/ki{seed}/900/500"
 
 TEMPLATES = [
 
@@ -304,12 +299,8 @@ def render_template(tmpl, heute):
 
 
 def generiere_bild_url(prompt):
-    import urllib.parse
-    seed = random.randint(1, 99999)
-    return (
-        f"https://image.pollinations.ai/prompt/{urllib.parse.quote(prompt)}"
-        f"?width=900&height=500&nologo=true&model=flux&seed={seed}"
-    )
+    seed = random.randint(1, 1000)
+    return f"https://picsum.photos/seed/ki{seed}/900/500"
 
 
 def generiere_artikel():
