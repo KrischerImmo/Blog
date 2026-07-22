@@ -2,8 +2,8 @@ name: Artikel generieren
 
 on:
   schedule:
-    - cron: '0 8 */2 * *'   # Alle 2 Tage um 8:00 Uhr UTC
-  workflow_dispatch:          # Manueller Start zum Testen
+    - cron: '0 8 */2 * *'
+  workflow_dispatch:
 
 jobs:
   generate:
@@ -22,6 +22,8 @@ jobs:
 
       - name: Artikel generieren
         run: python generate_article.py
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
 
       - name: Artikel committen und pushen
         run: |
