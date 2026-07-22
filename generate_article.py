@@ -44,7 +44,7 @@ TEMPLATES = [
     {
         "category": "Marktbericht",
         "emoji": "🏙️",
-        "bild": "city skyline modern buildings real estate",
+        "bild": "modern city apartment buildings architecture",
         "title": "Immobilienmarkt Düsseldorf {JAHR}: Trends und Ausblick für Käufer",
         "excerpt": "Wie entwickeln sich Preise und Nachfrage in Düsseldorf {JAHR}? Ein aktueller Überblick von Krischer Immobilien.",
         "content": (
@@ -69,7 +69,7 @@ TEMPLATES = [
     {
         "category": "Marktbericht",
         "emoji": "🏙️",
-        "bild": "residential apartment building exterior",
+        "bild": "luxury apartment building facade exterior",
         "title": "Wohnungsmarkt Düsseldorf {JAHR}: Was sich Käufer jetzt merken sollten",
         "excerpt": "Der Düsseldorfer Wohnungsmarkt {JAHR} im Überblick – Chancen, Risiken und aktuelle Entwicklungen.",
         "content": (
@@ -95,7 +95,7 @@ TEMPLATES = [
     {
         "category": "Kaufen",
         "emoji": "🔑",
-        "bild": "house keys door property purchase",
+        "bild": "beautiful house front door entrance",
         "title": "Immobilie kaufen in Düsseldorf: {ANZAHL} Tipps für Ihren Erfolg",
         "excerpt": "Wer in Düsseldorf eine Immobilie kaufen möchte, sollte diese {ANZAHL} wichtigen Punkte kennen.",
         "content": (
@@ -123,7 +123,7 @@ TEMPLATES = [
     {
         "category": "Verkaufen",
         "emoji": "📋",
-        "bild": "house for sale real estate garden",
+        "bild": "house exterior garden sunny real estate",
         "title": "Immobilie verkaufen in Düsseldorf: So erzielen Sie den besten Preis",
         "excerpt": "Mit der richtigen Strategie erzielen Sie beim Immobilienverkauf in Düsseldorf den bestmöglichen Preis.",
         "content": (
@@ -151,7 +151,7 @@ TEMPLATES = [
     {
         "category": "Stadtteile",
         "emoji": "🏘️",
-        "bild": "residential neighborhood houses street",
+        "bild": "residential street houses neighborhood germany",
         "title": "{STADTTEIL1}: Wohnen und Leben in Düsseldorf im Überblick",
         "excerpt": "{STADTTEIL1} gehört zu den beliebtesten Stadtteilen Düsseldorfs – Wohnqualität, Infrastruktur und Immobilienpreise.",
         "content": (
@@ -181,7 +181,7 @@ TEMPLATES = [
     {
         "category": "Finanzierung",
         "emoji": "💶",
-        "bild": "mortgage finance bank loan calculator",
+        "bild": "modern house exterior financing property",
         "title": "Baufinanzierung in Düsseldorf {JAHR}: Was Sie jetzt wissen müssen",
         "excerpt": "Aktuelle Tipps zur Immobilienfinanzierung in Düsseldorf – Zinsen, Eigenkapital und Förderprogramme {JAHR}.",
         "content": (
@@ -211,7 +211,7 @@ TEMPLATES = [
     {
         "category": "Ratgeber",
         "emoji": "📊",
-        "bild": "energy efficiency certificate building insulation",
+        "bild": "modern eco house energy efficient green building",
         "title": "Energieausweis beim Immobilienverkauf in Düsseldorf: Was ist zu beachten?",
         "excerpt": "Der Energieausweis ist Pflicht beim Immobilienverkauf – was Eigentümer in Düsseldorf wissen müssen.",
         "content": (
@@ -238,7 +238,7 @@ TEMPLATES = [
     {
         "category": "Ratgeber",
         "emoji": "🏗️",
-        "bild": "new construction building architecture crane",
+        "bild": "new construction modern house building site",
         "title": "Neubau oder Bestandsimmobilie in Düsseldorf – was passt zu Ihnen?",
         "excerpt": "Neubau oder Bestand? Beide Optionen haben in Düsseldorf ihre Vor- und Nachteile – eine Entscheidungshilfe.",
         "content": (
@@ -268,7 +268,7 @@ TEMPLATES = [
     {
         "category": "Vermietung",
         "emoji": "🏢",
-        "bild": "apartment rental building modern exterior",
+        "bild": "modern apartment building rental exterior balcony",
         "title": "Wohnung vermieten in Düsseldorf: Tipps für erfolgreiche Vermietung",
         "excerpt": "Als Vermieter in Düsseldorf erfolgreich sein – mit diesen Tipps finden Sie schnell gute Mieter.",
         "content": (
