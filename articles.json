@@ -1,6 +1,18 @@
 {
-  "updated": "2026-07-21",
+  "updated": "2026-07-22",
   "articles": [
+    {
+      "id": "20260722-215",
+      "date": "22. Juli 2026",
+      "datetime": "2026-07-22",
+      "category": "Vermietung",
+      "emoji": "🏢",
+      "imageUrl": "https://picsum.photos/seed/ki416/900/500",
+      "title": "Wohnung vermieten in Düsseldorf: Tipps für erfolgreiche Vermietung",
+      "excerpt": "Als Vermieter in Düsseldorf erfolgreich sein – mit diesen Tipps finden Sie schnell gute Mieter.",
+      "content": "Düsseldorf ist ein begehrter Mietmarkt: Die Nachfrage nach Mietwohnungen übersteigt in vielen Stadtteilen das Angebot. Das klingt gut für Vermieter – doch auch hier lohnt sich eine durchdachte Strategie.\n\nSetzen Sie den Mietpreis realistisch: Eine zu hohe Miete schreckt gute Mieter ab und führt zu langen Leerstandszeiten. Orientieren Sie sich am aktuellen Mietspiegel und vergleichbaren Angeboten in Eller und Umgebung.\n\nInvestieren Sie in die Präsentation: Gute Fotos und eine vollständige Beschreibung der Wohnung sorgen für mehr und bessere Bewerbungen. Achten Sie auf Sauberkeit und kleine Schönheitsreparaturen vor der Besichtigung.\n\nWählen Sie Mieter sorgfältig aus: Eine Selbstauskunft, Gehaltsnachweise und eine Schufa-Auskunft sind wichtige Instrumente zur Mieterauswahl. Nehmen Sie sich die Zeit für ein persönliches Gespräch.\n\nKennen Sie Ihre Pflichten: Als Vermieter sind Sie für die Instandhaltung der Immobilie verantwortlich. Betriebskosten müssen korrekt abgerechnet werden. Informieren Sie sich über aktuelle Mietrechtsregelungen.\n\nKrischer Immobilien unterstützt Sie bei der professionellen Vermarktung und Vermietung Ihrer Immobilie in Düsseldorf. Sprechen Sie uns an – wir finden für Sie den passenden Mieter.",
+      "readTime": "4"
+    },
     {
       "id": "20260721-698",
       "date": "21. Juli 2026",
@@ -275,18 +287,6 @@
       "title": "Immobilie verkaufen in Düsseldorf: So erzielen Sie den besten Preis",
       "excerpt": "Mit der richtigen Strategie erzielen Sie beim Immobilienverkauf in Düsseldorf den bestmöglichen Preis.",
       "content": "Der Verkauf einer Immobilie in Düsseldorf kann – richtig angegangen – ein sehr erfolgreiches Vorhaben sein. Doch wie bei vielen Dingen im Leben liegt der Unterschied zwischen einem guten und einem sehr guten Ergebnis in der Vorbereitung.\n\nDer erste und wichtigste Schritt ist eine realistische Wertermittlung. Viele Eigentümer tendieren dazu, den Wert ihrer Immobilie zu überschätzen – sei es aus emotionalen Gründen oder aufgrund veralteter Vergleichswerte. Ein zu hoher Angebotspreis schreckt Interessenten ab und verlängert die Vermarktungsdauer erheblich.\n\nInvestieren Sie in eine professionelle Präsentation: Hochwertige Fotos, ein ansprechendes Exposé und ein gepflegter Ersteindruck beim Besichtigungstermin machen einen entscheidenden Unterschied. In Unterbilk und Bilk können gut präsentierte Objekte deutlich höhere Preise erzielen.\n\nStellen Sie alle notwendigen Unterlagen rechtzeitig zusammen: Energieausweis, Grundbuchauszug, Baupläne und Nebenkostenabrechnungen sollten beim ersten Interessentengespräch verfügbar sein.\n\nKrischer Immobilien übernimmt für Sie die professionelle Vermarktung Ihrer Immobilie in Düsseldorf – von der Wertermittlung über die Besichtigungen bis zum notariellen Abschluss. Nehmen Sie jetzt Kontakt auf und lassen Sie sich unverbindlich beraten.",
-      "readTime": "4"
-    },
-    {
-      "id": "20260613-209",
-      "date": "13. Juni 2026",
-      "datetime": "2026-06-13",
-      "category": "Ratgeber",
-      "emoji": "📊",
-      "imageUrl": "https://image.pollinations.ai/prompt/D%C3%BCsseldorf%20Altstadt%20Rhine%20river%20waterfront%20Germany%20photography%20architecture%20golden%20hour?width=900&height=500&nologo=true&model=flux&seed=12044",
-      "title": "Energieausweis beim Immobilienverkauf in Düsseldorf: Was ist zu beachten?",
-      "excerpt": "Der Energieausweis ist Pflicht beim Immobilienverkauf – was Eigentümer in Düsseldorf wissen müssen.",
-      "content": "Wer seine Immobilie in Düsseldorf verkaufen oder vermieten möchte, kommt am Energieausweis nicht vorbei. Dieses Dokument ist gesetzlich vorgeschrieben und muss Interessenten spätestens bei der Besichtigung vorgelegt werden.\n\nEs gibt zwei Arten von Energieausweisen: den Verbrauchsausweis und den Bedarfsausweis. Der Verbrauchsausweis basiert auf dem tatsächlichen Energieverbrauch der vergangenen Jahre, der Bedarfsausweis auf einer technischen Analyse des Gebäudes. Für Gebäude mit weniger als fünf Wohneinheiten und Bauantrag vor 1977 ist in der Regel der Bedarfsausweis vorgeschrieben.\n\nDie Energieeffizienzklassen reichen von A+ (sehr effizient) bis H (wenig effizient). Ein gutes Energiezeugnis kann den Verkaufswert einer Immobilie positiv beeinflussen – Käufer achten zunehmend auf die zu erwartenden Nebenkosten.\n\nIn Düsseldorf können Energieausweise bei zugelassenen Energieberatern, Architekten oder Ingenieuren beantragt werden. Die Kosten variieren je nach Art und Aufwand.\n\nTipp: Wer energetische Sanierungsmaßnahmen plant, sollte vorab prüfen, welche Fördermittel von KfW oder BAFA in Anspruch genommen werden können.\n\nBei Fragen rund um den Immobilienverkauf in Düsseldorf steht Ihnen Krischer Immobilien jederzeit beratend zur Seite. Sprechen Sie uns an!",
       "readTime": "4"
     }
   ]
