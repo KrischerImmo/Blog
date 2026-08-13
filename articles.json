@@ -1,6 +1,18 @@
 {
-  "updated": "2026-08-11",
+  "updated": "2026-08-13",
   "articles": [
+    {
+      "id": "20260813-460",
+      "date": "13. August 2026",
+      "datetime": "2026-08-13",
+      "category": "Ratgeber",
+      "emoji": "🏗️",
+      "imageUrl": "https://picsum.photos/seed/ki106/900/500",
+      "title": "Neubau oder Bestandsimmobilie in Düsseldorf – was passt zu Ihnen?",
+      "excerpt": "Neubau oder Bestand? Beide Optionen haben in Düsseldorf ihre Vor- und Nachteile – eine Entscheidungshilfe.",
+      "content": "Eine der grundlegenden Fragen beim Immobilienkauf in Düsseldorf lautet: Neubau oder Bestandsimmobilie? Beide Varianten haben ihre spezifischen Vor- und Nachteile und die Antwort hängt stark von Ihren persönlichen Prioritäten ab.\n\nNeubauten punkten mit moderner Ausstattung, niedrigen Energiekosten und aktuellen Sicherheitsstandards. Sie können oft individuell mitgestaltet werden und bieten in der Regel eine lange störungsfreie Nutzungszeit. Allerdings sind die Kaufpreise in Düsseldorf für Neubauten deutlich höher als für vergleichbare Bestandsimmobilien.\n\nBestandsimmobilien hingegen bieten oft mehr Charme und Charakter – Altbauwohnungen in Flingern oder Eller sind dafür bekannte Beispiele. Sie sind häufig günstiger, befinden sich aber möglicherweise in weniger energieeffizientem Zustand. Hier sollten Käufer potenzielle Renovierungskosten einkalkulieren.\n\nEin wichtiger Faktor ist auch der Zeitaspekt: Beim Neubau kann es von der Vertragsunterzeichnung bis zum Einzug oft ein bis zwei Jahre dauern. Wer schnell einziehen möchte, ist mit einer Bestandsimmobilie besser bedient.\n\nKrischer Immobilien berät Sie gerne bei der Entscheidung und zeigt Ihnen passende Angebote in Düsseldorf – ob Neubau oder Bestand. Nehmen Sie jetzt Kontakt auf!",
+      "readTime": "4"
+    },
     {
       "id": "20260811-820",
       "date": "11. August 2026",
@@ -275,18 +287,6 @@
       "title": "Eller: Wohnen und Leben in Düsseldorf im Überblick",
       "excerpt": "Eller gehört zu den beliebtesten Stadtteilen Düsseldorfs – Wohnqualität, Infrastruktur und Immobilienpreise.",
       "content": "Eller ist einer der vielseitigsten Stadtteile Düsseldorfs und zieht Familien, Berufstätige und Kapitalanleger gleichermaßen an. Was macht diesen Stadtteil so besonders?\n\nDie Infrastruktur in Eller ist hervorragend: Einkaufsmöglichkeiten, Schulen, Kindergärten und medizinische Versorgung sind gut erreichbar. Die Anbindung an den öffentlichen Nahverkehr ermöglicht eine schnelle Verbindung in die Innenstadt und zu wichtigen Arbeitgebern.\n\nDas Wohnungsangebot in Eller ist vielfältig: Vom klassischen Gründerzeithaus bis zum modernen Neubau findet sich hier für unterschiedliche Ansprüche und Budgets das passende Objekt. Besonders beliebt sind Eigentumswohnungen mit Balkon oder Terrasse.\n\nIm Vergleich zu Toplagen wie Oberkassel bietet Eller oft noch attraktivere Preise bei vergleichbarer Lebensqualität – ein Vorteil, den immer mehr Käufer für sich entdecken.\n\nBenachbarte Stadtteile wie Flingern und Heerdt ergänzen das Angebot und machen den Bereich zu einem der interessantesten Wohngebiete Düsseldorfs.\n\nSie interessieren sich für eine Immobilie in Eller oder möchten Ihre dortige Immobilie verkaufen? Krischer Immobilien kennt diesen Markt und berät Sie gerne persönlich. Sprechen Sie uns an!",
-      "readTime": "4"
-    },
-    {
-      "id": "20260709-610",
-      "date": "9. Juli 2026",
-      "datetime": "2026-07-09",
-      "category": "Vermietung",
-      "emoji": "🏢",
-      "imageUrl": "https://image.pollinations.ai/prompt/modern%20apartment%20building%20rental%20D%C3%BCsseldorf%20Germany%20exterior%20architecture%20real%20estate?width=900&height=500&nologo=true&model=flux&seed=81945",
-      "title": "Wohnung vermieten in Düsseldorf: Tipps für erfolgreiche Vermietung",
-      "excerpt": "Als Vermieter in Düsseldorf erfolgreich sein – mit diesen Tipps finden Sie schnell gute Mieter.",
-      "content": "Düsseldorf ist ein begehrter Mietmarkt: Die Nachfrage nach Mietwohnungen übersteigt in vielen Stadtteilen das Angebot. Das klingt gut für Vermieter – doch auch hier lohnt sich eine durchdachte Strategie.\n\nSetzen Sie den Mietpreis realistisch: Eine zu hohe Miete schreckt gute Mieter ab und führt zu langen Leerstandszeiten. Orientieren Sie sich am aktuellen Mietspiegel und vergleichbaren Angeboten in Heerdt und Umgebung.\n\nInvestieren Sie in die Präsentation: Gute Fotos und eine vollständige Beschreibung der Wohnung sorgen für mehr und bessere Bewerbungen. Achten Sie auf Sauberkeit und kleine Schönheitsreparaturen vor der Besichtigung.\n\nWählen Sie Mieter sorgfältig aus: Eine Selbstauskunft, Gehaltsnachweise und eine Schufa-Auskunft sind wichtige Instrumente zur Mieterauswahl. Nehmen Sie sich die Zeit für ein persönliches Gespräch.\n\nKennen Sie Ihre Pflichten: Als Vermieter sind Sie für die Instandhaltung der Immobilie verantwortlich. Betriebskosten müssen korrekt abgerechnet werden. Informieren Sie sich über aktuelle Mietrechtsregelungen.\n\nKrischer Immobilien unterstützt Sie bei der professionellen Vermarktung und Vermietung Ihrer Immobilie in Düsseldorf. Sprechen Sie uns an – wir finden für Sie den passenden Mieter.",
       "readTime": "4"
     }
   ]
