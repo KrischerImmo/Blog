@@ -25,14 +25,13 @@ def bild_url(suchbegriff):
     api_key = os.environ.get('PEXELS_API_KEY', '')
     if api_key:
         try:
-            url = f"https://api.pexels.com/v1/search?query={urllib.request.quote(suchbegriff)}&per_page=15&orientation=landscape"
+            url = f"https://api.pexels.com/v1/search?query={urllib.request.quote(suchbegriff)}&per_page=1&orientation=landscape"
             req = urllib.request.Request(url, headers={"Authorization": api_key})
             with urllib.request.urlopen(req, timeout=10) as r:
                 data = json.loads(r.read())
             fotos = data.get("photos", [])
             if fotos:
-                foto = random.choice(fotos)
-                return foto["src"]["large2x"]
+                return fotos[0]["src"]["large2x"]
         except Exception as e:
             print(f"Pexels Fehler: {e}")
     seed = random.randint(1, 1000)
@@ -44,7 +43,7 @@ TEMPLATES = [
     {
         "category": "Marktbericht",
         "emoji": "🏙️",
-        "bild": "modern city apartment buildings architecture",
+        "bild": "aerial view city residential buildings",
         "title": "Immobilienmarkt Düsseldorf {JAHR}: Trends und Ausblick für Käufer",
         "excerpt": "Wie entwickeln sich Preise und Nachfrage in Düsseldorf {JAHR}? Ein aktueller Überblick von Krischer Immobilien.",
         "content": (
@@ -69,7 +68,7 @@ TEMPLATES = [
     {
         "category": "Marktbericht",
         "emoji": "🏙️",
-        "bild": "luxury apartment building facade exterior",
+        "bild": "modern apartment building exterior facade",
         "title": "Wohnungsmarkt Düsseldorf {JAHR}: Was sich Käufer jetzt merken sollten",
         "excerpt": "Der Düsseldorfer Wohnungsmarkt {JAHR} im Überblick – Chancen, Risiken und aktuelle Entwicklungen.",
         "content": (
@@ -95,7 +94,7 @@ TEMPLATES = [
     {
         "category": "Kaufen",
         "emoji": "🔑",
-        "bild": "beautiful house front door entrance",
+        "bild": "house keys front door real estate",
         "title": "Immobilie kaufen in Düsseldorf: {ANZAHL} Tipps für Ihren Erfolg",
         "excerpt": "Wer in Düsseldorf eine Immobilie kaufen möchte, sollte diese {ANZAHL} wichtigen Punkte kennen.",
         "content": (
@@ -123,7 +122,7 @@ TEMPLATES = [
     {
         "category": "Verkaufen",
         "emoji": "📋",
-        "bild": "house exterior garden sunny real estate",
+        "bild": "house with garden for sale sunny",
         "title": "Immobilie verkaufen in Düsseldorf: So erzielen Sie den besten Preis",
         "excerpt": "Mit der richtigen Strategie erzielen Sie beim Immobilienverkauf in Düsseldorf den bestmöglichen Preis.",
         "content": (
@@ -151,7 +150,7 @@ TEMPLATES = [
     {
         "category": "Stadtteile",
         "emoji": "🏘️",
-        "bild": "residential street houses neighborhood germany",
+        "bild": "suburban street houses neighborhood",
         "title": "{STADTTEIL1}: Wohnen und Leben in Düsseldorf im Überblick",
         "excerpt": "{STADTTEIL1} gehört zu den beliebtesten Stadtteilen Düsseldorfs – Wohnqualität, Infrastruktur und Immobilienpreise.",
         "content": (
@@ -181,7 +180,7 @@ TEMPLATES = [
     {
         "category": "Finanzierung",
         "emoji": "💶",
-        "bild": "modern house exterior financing property",
+        "bild": "house coins money investment property",
         "title": "Baufinanzierung in Düsseldorf {JAHR}: Was Sie jetzt wissen müssen",
         "excerpt": "Aktuelle Tipps zur Immobilienfinanzierung in Düsseldorf – Zinsen, Eigenkapital und Förderprogramme {JAHR}.",
         "content": (
@@ -211,7 +210,7 @@ TEMPLATES = [
     {
         "category": "Ratgeber",
         "emoji": "📊",
-        "bild": "modern eco house energy efficient green building",
+        "bild": "eco house solar panels green energy home",
         "title": "Energieausweis beim Immobilienverkauf in Düsseldorf: Was ist zu beachten?",
         "excerpt": "Der Energieausweis ist Pflicht beim Immobilienverkauf – was Eigentümer in Düsseldorf wissen müssen.",
         "content": (
@@ -238,7 +237,7 @@ TEMPLATES = [
     {
         "category": "Ratgeber",
         "emoji": "🏗️",
-        "bild": "new construction modern house building site",
+        "bild": "new house construction building site workers",
         "title": "Neubau oder Bestandsimmobilie in Düsseldorf – was passt zu Ihnen?",
         "excerpt": "Neubau oder Bestand? Beide Optionen haben in Düsseldorf ihre Vor- und Nachteile – eine Entscheidungshilfe.",
         "content": (
@@ -268,7 +267,7 @@ TEMPLATES = [
     {
         "category": "Vermietung",
         "emoji": "🏢",
-        "bild": "modern apartment building rental exterior balcony",
+        "bild": "apartment building balcony rental exterior",
         "title": "Wohnung vermieten in Düsseldorf: Tipps für erfolgreiche Vermietung",
         "excerpt": "Als Vermieter in Düsseldorf erfolgreich sein – mit diesen Tipps finden Sie schnell gute Mieter.",
         "content": (
@@ -313,21 +312,7 @@ def render_template(tmpl, heute):
 
 
 def generiere_bild_url(suchbegriff):
-    api_key = os.environ.get('PEXELS_API_KEY', '')
-    if api_key:
-        try:
-            url = f"https://api.pexels.com/v1/search?query={urllib.request.quote(suchbegriff)}&per_page=15&orientation=landscape"
-            req = urllib.request.Request(url, headers={"Authorization": api_key})
-            with urllib.request.urlopen(req, timeout=10) as r:
-                data = json.loads(r.read())
-            fotos = data.get("photos", [])
-            if fotos:
-                foto = random.choice(fotos)
-                return foto["src"]["large2x"]
-        except Exception as e:
-            print(f"Pexels Fehler: {e}")
-    seed = random.randint(1, 1000)
-    return f"https://picsum.photos/seed/ki{seed}/900/500"
+    return bild_url(suchbegriff)
 
 
 def generiere_artikel():
