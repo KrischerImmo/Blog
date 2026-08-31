@@ -21,7 +21,21 @@ STADTTEILE = [
 def datum_de(d):
     return f"{d.day}. {MONATE_DE[d.month]} {d.year}"
 
-def bild_url(suchbegriff):
+LOKALE_BILDER = {
+    "Marktbericht": ["images/marktbericht.jpg"],
+    "Kaufen":       ["images/kaufen.jpg"],
+    "Verkaufen":    ["images/verkaufen.jpg"],
+    "Stadtteile":   ["images/stadtteile.jpg"],
+    "Finanzierung": ["images/finanzierung.jpg"],
+    "Ratgeber":     ["images/ratgeber.jpg"],
+    "Vermietung":   ["images/vermietung.jpg"],
+}
+
+def lokales_bild(kategorie):
+    optionen = LOKALE_BILDER.get(kategorie, ["images/marktbericht.jpg"])
+    return random.choice(optionen)
+
+def bild_url(suchbegriff, kategorie):
     api_key = os.environ.get('PEXELS_API_KEY', '')
     if api_key:
         try:
@@ -34,8 +48,7 @@ def bild_url(suchbegriff):
                 return fotos[0]["src"]["large2x"]
         except Exception as e:
             print(f"Pexels Fehler: {e}")
-    seed = random.randint(1, 1000)
-    return f"https://picsum.photos/seed/ki{seed}/900/500"
+    return lokales_bild(kategorie)
 
 TEMPLATES = [
 
@@ -311,8 +324,8 @@ def render_template(tmpl, heute):
     return text
 
 
-def generiere_bild_url(suchbegriff):
-    return bild_url(suchbegriff)
+def generiere_bild_url(suchbegriff, kategorie):
+    return bild_url(suchbegriff, kategorie)
 
 
 def generiere_artikel():
@@ -326,13 +339,20 @@ def generiere_artikel():
         "datetime": heute.isoformat(),
         "category": tmpl["category"],
         "emoji": tmpl["emoji"],
-        "imageUrl": generiere_bild_url(tmpl["bild"]),
+        "imageUrl": generiere_bild_url(tmpl["bild"], tmpl["category"]),
         "title": filled["title"],
         "excerpt": filled["excerpt"],
         "content": filled["content"],
         "readTime": "4"
     }
 
+
+def repariere_bilder(daten):
+    for a in daten.get("articles", []):
+        url = a.get("imageUrl", "")
+        if not url or "picsum" in url or url.startswith("http") and "pexels" not in url:
+            a["imageUrl"] = lokales_bild(a.get("category", "Marktbericht"))
+            print(f"Bild repariert: {a.get('title','')[:50]}")
 
 def aktualisiere_json(neuer_artikel):
     daten = {"articles": []}
@@ -343,6 +363,7 @@ def aktualisiere_json(neuer_artikel):
         except (json.JSONDecodeError, ValueError):
             print("articles.json war ungültig – starte neu.")
             daten = {"articles": []}
+    repariere_bilder(daten)
     daten['articles'].insert(0, neuer_artikel)
     daten['articles'] = daten['articles'][:24]
     daten['updated'] = datetime.date.today().isoformat()
