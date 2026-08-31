@@ -72,7 +72,6 @@
     line-height: 1.6;
   }
 
-  /* Grid */
   .ki-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -102,7 +101,6 @@
     .ki-grid .ki-card:first-child .ki-body { border-radius: 0 0 4px 4px; padding: 22px; }
   }
 
-  /* Karte */
   .ki-card {
     background: var(--ki-weiss);
     border: 1px solid var(--ki-border);
@@ -126,16 +124,22 @@
   }
 
   .ki-img img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
     transition: transform .4s;
   }
 
   .ki-card:hover .ki-img img { transform: scale(1.04); }
 
   .ki-placeholder {
-    width: 100%; height: 100%; min-height: 150px;
-    display: flex; align-items: center; justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg,#f0f0f0,#e0e0e0);
     font-size: 48px;
   }
@@ -178,7 +182,6 @@
   .ki-btn::after { content: '\2192'; font-size: 13px; }
   .ki-card:hover .ki-btn { gap: 9px; border-bottom-color: var(--ki-gruen); }
 
-  /* CTA */
   .ki-cta { text-align: center; }
   .ki-cta a {
     display: inline-block; font-size: 12px; font-weight: 700;
@@ -190,7 +193,6 @@
   }
   .ki-cta a:hover { background: var(--ki-schwarz); border-color: var(--ki-schwarz); }
 
-  /* Modal */
   .ki-overlay {
     display: none; position: fixed; inset: 0;
     background: rgba(0,0,0,.65); z-index: 9999;
@@ -278,7 +280,6 @@
   <a href="https://www.krischer-immobilien.de/kontakt">Jetzt Kontakt aufnehmen</a>
 </div>
 
-<!-- Modal -->
 <div class="ki-overlay" id="ki-overlay">
   <div class="ki-modal">
     <div class="ki-mhead">
@@ -296,37 +297,6 @@
 </div>
 
 <script>
-var ARTIKEL = [
-  {
-    id:'1',date:'12. Juni 2026',datetime:'2026-06-12',category:'Marktbericht',emoji:'🏙️',
-    title:'Immobilienmarkt Düsseldorf 2026: Preise, Trends und Ausblick',
-    excerpt:'Der Düsseldorfer Immobilienmarkt bleibt 2026 robust – was Käufer und Verkäufer jetzt wissen müssen.',
-    content:'Der Immobilienmarkt in Düsseldorf zeigt sich auch 2026 von einer stabilen Seite. Trotz der veränderten Zinslandschaft der vergangenen Jahre hat die Nachfrage nach Wohnimmobilien in der Landeshauptstadt nicht nachgelassen.\n\nBesonders begehrt sind nach wie vor Stadtteile wie Oberkassel, Pempelfort und Golzheim. Hier treffen eine exzellente Infrastruktur, gute Schulen und eine hohe Lebensqualität auf eine begrenzte Anzahl verfügbarer Immobilien.\n\nInteressant ist die Entwicklung in aufstrebenden Stadtteilen wie Flingern und Bilk: Junge Familien und Berufstätige schätzen die Mischung aus urbanem Flair und vergleichsweise moderaten Preisen.\n\nFür Verkäufer ist 2026 ein grundsätzlich guter Zeitpunkt: Die Nachfrage übersteigt das Angebot in vielen Segmenten. Käufer sollten sich nicht unter Druck setzen lassen und eine solide Finanzierungsplanung aufstellen.\n\nKrischer Immobilien begleitet Sie als kompetenter Partner durch alle Phasen Ihrer Immobilientransaktion. Sprechen Sie uns an – wir beraten Sie gerne persönlich.',
-    readTime:'5'
-  },
-  {
-    id:'2',date:'1. Juni 2026',datetime:'2026-06-01',category:'Stadtteile',emoji:'🏘️',
-    title:'Oberkassel, Pempelfort oder Gerresheim: Düsseldorf im Vergleich',
-    excerpt:'Welcher Düsseldorfer Stadtteil passt zu Ihnen? Ein Überblick über Lage, Preise und Lebensqualität.',
-    content:'Düsseldorf ist nicht gleich Düsseldorf: Jeder Stadtteil hat seinen eigenen Charakter, seine eigenen Vorzüge und sein eigenes Preisniveau.\n\nOberkassel gilt als einer der exklusivsten Stadtteile Düsseldorfs. Villen, großzügige Altbauwohnungen und eine direkte Rheinlage machen den Stadtteil besonders attraktiv.\n\nPempelfort überzeugt mit seiner lebendigen Kulturszene, zahlreichen Cafés und Restaurants sowie einer sehr guten Anbindung an die Innenstadt.\n\nGerresheim hingegen bietet deutlich mehr Wohnfläche für das gleiche Budget. Die gute Anbindung an den öffentlichen Nahverkehr und die ruhigere Atmosphäre machen ihn besonders für Familien interessant.\n\nLassen Sie sich von Krischer Immobilien beraten, welche Lage zu Ihren Anforderungen und Ihrem Budget passt.',
-    readTime:'4'
-  },
-  {
-    id:'3',date:'20. Mai 2026',datetime:'2026-05-20',category:'Verkaufen',emoji:'📋',
-    title:'Immobilie verkaufen in Düsseldorf: 7 Fehler vermeiden',
-    excerpt:'Wer seine Immobilie in Düsseldorf verkauft, sollte diese 7 häufigen Fehler unbedingt kennen.',
-    content:'Der Verkauf einer Immobilie ist eine der größten finanziellen Entscheidungen im Leben. Damit Sie den bestmöglichen Erlös erzielen, sollten Sie typische Fehler von Anfang an vermeiden.\n\n1. Falscher Angebotspreis: Ein zu hoher Preis schreckt Interessenten ab, ein zu niedriger lässt Geld auf dem Tisch.\n\n2. Schlechte Fotos: Hochwertige Immobilienfotos sind entscheidend für den ersten Eindruck.\n\n3. Unvollständige Unterlagen: Energieausweis, Grundbuchauszug und Baubeschreibung müssen rechtzeitig vorliegen.\n\n4. Emotionale Preisvorstellung: Der persönliche Wert einer Immobilie entspricht selten dem Marktwert.\n\n5. Falsche Zielgruppe: Gezieltes Marketing spart Zeit und Nerven.\n\n6. Schlechte Vorbereitung für Besichtigungen: Ein aufgeräumtes, helles Objekt hinterlässt einen besseren Eindruck.\n\n7. Verkauf ohne Makler: Ohne Marktkenntnisse riskieren Sie einen schlechteren Preis.\n\nKrischer Immobilien unterstützt Sie von der ersten Bewertung bis zur Schlüsselübergabe.',
-    readTime:'4'
-  },
-  {
-    id:'4',date:'8. Mai 2026',datetime:'2026-05-08',category:'Finanzierung',emoji:'💶',
-    title:'Baufinanzierung 2026 in Düsseldorf: Zinsen und KfW-Förderungen',
-    excerpt:'Was hat sich bei der Baufinanzierung 2026 geändert und welche Förderprogramme gibt es?',
-    content:'Die Zinsentwicklung der letzten Jahre hat den Immobilienmarkt in Düsseldorf nachhaltig verändert. Die Konditionen haben sich 2026 stabilisiert – das erfordert sorgfältige Planung, bietet aber attraktive Chancen.\n\nGrundsätzlich gilt: Je höher das Eigenkapital, desto besser die Konditionen. Experten empfehlen mindestens 20 Prozent des Kaufpreises als Eigenkapital einzubringen.\n\nEine wichtige Rolle spielen die Förderprogramme der KfW-Bank. Besonders das Programm Wohneigentum für Familien (WEF) bietet zinsgünstige Darlehen für Familien mit Kindern.\n\nTipp: Vergleichen Sie vor dem Abschluss eines Darlehens mehrere Angebote und lassen Sie sich von einem unabhängigen Finanzierungsberater begleiten.\n\nBei Fragen rund um die Finanzierung Ihrer Traumimmobilie in Düsseldorf helfen wir von Krischer Immobilien Ihnen gerne weiter.',
-    readTime:'4'
-  }
-];
-
 var EMOJI = {Marktbericht:'🏙️',Kaufen:'🔑',Verkaufen:'📋',Stadtteile:'🏘️',Finanzierung:'💶',Ratgeber:'📊',Vermietung:'🏢'};
 var grid = document.getElementById('ki-grid');
 var overlay = document.getElementById('ki-overlay');
@@ -340,25 +310,62 @@ function esc(s) {
   return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+function renderKarte(a, i) {
+  var emoji = a.emoji || EMOJI[a.category] || '🏠';
+
+  var card = document.createElement('article');
+  card.className = 'ki-card';
+
+  // Bild-Container
+  var imgDiv = document.createElement('div');
+  imgDiv.className = 'ki-img';
+
+  if (a.imageUrl) {
+    var img = new Image();
+    img.alt = a.title || '';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+    img.style.display = 'block';
+    img.onerror = function() {
+      var ph = document.createElement('div');
+      ph.className = 'ki-placeholder';
+      ph.textContent = emoji;
+      if (img.parentNode === imgDiv) imgDiv.replaceChild(ph, img);
+    };
+    img.src = a.imageUrl;
+    imgDiv.appendChild(img);
+  } else {
+    var ph = document.createElement('div');
+    ph.className = 'ki-placeholder';
+    ph.textContent = emoji;
+    imgDiv.appendChild(ph);
+  }
+
+  var badge = document.createElement('span');
+  badge.className = 'ki-badge';
+  badge.textContent = a.category || '';
+  imgDiv.appendChild(badge);
+
+  // Text-Container
+  var body = document.createElement('div');
+  body.className = 'ki-body';
+  body.innerHTML =
+    '<div class="ki-meta"><time datetime="'+esc(a.datetime)+'">'+esc(a.date)+'</time><span class="ki-dot"></span><span>'+esc(a.readTime)+' Min.</span></div>'+
+    '<h3 class="ki-title">'+esc(a.title)+'</h3>'+
+    (i===0?'<p class="ki-excerpt">'+esc(a.excerpt)+'</p>':'')+
+    '<button class="ki-btn" type="button">Weiterlesen</button>';
+
+  card.appendChild(imgDiv);
+  card.appendChild(body);
+  card.addEventListener('click', function(){ openModal(a); });
+  return card;
+}
+
 function render(liste) {
   grid.innerHTML = '';
-  liste.slice(0,4).forEach(function(a,i) {
-    var emoji = a.emoji || EMOJI[a.category] || '🏠';
-    var bildHTML = a.imageUrl
-      ? '<img src="'+esc(a.imageUrl)+'" alt="'+esc(a.title)+'" loading="lazy">'
-      : '<div class="ki-placeholder">'+emoji+'</div>';
-    var card = document.createElement('article');
-    card.className = 'ki-card';
-    card.innerHTML =
-      '<div class="ki-img">'+bildHTML+'<span class="ki-badge">'+esc(a.category)+'</span></div>'+
-      '<div class="ki-body">'+
-        '<div class="ki-meta"><time datetime="'+esc(a.datetime)+'">'+esc(a.date)+'</time><span class="ki-dot"></span><span>'+esc(a.readTime)+' Min.</span></div>'+
-        '<h3 class="ki-title">'+esc(a.title)+'</h3>'+
-        (i===0?'<p class="ki-excerpt">'+esc(a.excerpt)+'</p>':'')+
-        '<button class="ki-btn" type="button">Weiterlesen</button>'+
-      '</div>';
-    card.addEventListener('click', function(){ openModal(a); });
-    grid.appendChild(card);
+  liste.slice(0, 4).forEach(function(a, i) {
+    grid.appendChild(renderKarte(a, i));
   });
 }
 
@@ -381,10 +388,6 @@ mClose.addEventListener('click', closeModal);
 overlay.addEventListener('click', function(e){ if(e.target===overlay) closeModal(); });
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
 
-// Sofort Starter-Artikel anzeigen
-render(ARTIKEL);
-
-// Im Hintergrund neuere Artikel von GitHub laden
 fetch('articles.json?v=' + Date.now())
   .then(function(r){ return r.json(); })
   .then(function(d){
