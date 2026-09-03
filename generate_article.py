@@ -21,14 +21,16 @@ STADTTEILE = [
 def datum_de(d):
     return f"{d.day}. {MONATE_DE[d.month]} {d.year}"
 
+BASE = "https://krischerimmo.github.io/Blog/"
+
 LOKALE_BILDER = {
-    "Marktbericht": ["images/marktbericht.jpg"],
-    "Kaufen":       ["images/kaufen.jpg"],
-    "Verkaufen":    ["images/verkaufen.jpg"],
-    "Stadtteile":   ["images/stadtteile.jpg"],
-    "Finanzierung": ["images/finanzierung.jpg"],
-    "Ratgeber":     ["images/ratgeber.jpg"],
-    "Vermietung":   ["images/vermietung.jpg"],
+    "Marktbericht": [BASE + "images/marktbericht.jpg"],
+    "Kaufen":       [BASE + "images/kaufen.jpg"],
+    "Verkaufen":    [BASE + "images/verkaufen.jpg"],
+    "Stadtteile":   [BASE + "images/stadtteile.jpg"],
+    "Finanzierung": [BASE + "images/finanzierung.jpg"],
+    "Ratgeber":     [BASE + "images/ratgeber.jpg"],
+    "Vermietung":   [BASE + "images/vermietung.jpg"],
 }
 
 def lokales_bild(kategorie):
