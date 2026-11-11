@@ -1,6 +1,18 @@
 {
-  "updated": "2026-11-09",
+  "updated": "2026-11-11",
   "articles": [
+    {
+      "id": "20261111-602",
+      "date": "11. November 2026",
+      "datetime": "2026-11-11",
+      "category": "Ratgeber",
+      "emoji": "📊",
+      "imageUrl": "https://krischerimmo.github.io/Blog/images/ratgeber.jpg",
+      "title": "Energieausweis beim Immobilienverkauf in Düsseldorf: Was ist zu beachten?",
+      "excerpt": "Der Energieausweis ist Pflicht beim Immobilienverkauf – was Eigentümer in Düsseldorf wissen müssen.",
+      "content": "Wer seine Immobilie in Düsseldorf verkaufen oder vermieten möchte, kommt am Energieausweis nicht vorbei. Dieses Dokument ist gesetzlich vorgeschrieben und muss Interessenten spätestens bei der Besichtigung vorgelegt werden.\n\nEs gibt zwei Arten von Energieausweisen: den Verbrauchsausweis und den Bedarfsausweis. Der Verbrauchsausweis basiert auf dem tatsächlichen Energieverbrauch der vergangenen Jahre, der Bedarfsausweis auf einer technischen Analyse des Gebäudes. Für Gebäude mit weniger als fünf Wohneinheiten und Bauantrag vor 1977 ist in der Regel der Bedarfsausweis vorgeschrieben.\n\nDie Energieeffizienzklassen reichen von A+ (sehr effizient) bis H (wenig effizient). Ein gutes Energiezeugnis kann den Verkaufswert einer Immobilie positiv beeinflussen – Käufer achten zunehmend auf die zu erwartenden Nebenkosten.\n\nIn Düsseldorf können Energieausweise bei zugelassenen Energieberatern, Architekten oder Ingenieuren beantragt werden. Die Kosten variieren je nach Art und Aufwand.\n\nTipp: Wer energetische Sanierungsmaßnahmen plant, sollte vorab prüfen, welche Fördermittel von KfW oder BAFA in Anspruch genommen werden können.\n\nBei Fragen rund um den Immobilienverkauf in Düsseldorf steht Ihnen Krischer Immobilien jederzeit beratend zur Seite. Sprechen Sie uns an!",
+      "readTime": "4"
+    },
     {
       "id": "20261109-455",
       "date": "9. November 2026",
@@ -275,18 +287,6 @@
       "title": "Immobilie kaufen in Düsseldorf: 5 Tipps für Ihren Erfolg",
       "excerpt": "Wer in Düsseldorf eine Immobilie kaufen möchte, sollte diese 5 wichtigen Punkte kennen.",
       "content": "Der Kauf einer Immobilie ist eine der bedeutendsten Entscheidungen im Leben. Gerade in einer gefragten Stadt wie Düsseldorf lohnt es sich, gut vorbereitet zu sein. Wir von Krischer Immobilien haben die wichtigsten Tipps für Sie zusammengestellt.\n\n1. Finanzierung klären: Bevor Sie auf Besichtigungen gehen, sollten Sie wissen, was Sie sich leisten können. Eine Finanzierungszusage Ihrer Bank gibt Ihnen Sicherheit und macht Sie als Käufer glaubwürdiger.\n\n2. Lage priorisieren: In Düsseldorf gilt: Lage, Lage, Lage. Stadtteile wie Oberkassel und Pempelfort bieten unterschiedliche Vorzüge – von Rheinlage bis Szene-Viertel. Definieren Sie Ihre Prioritäten im Vorfeld.\n\n3. Nebenkosten einplanen: Grunderwerbsteuer, Notarkosten und eventuelle Maklergebühren können zusammen rund 10–12 Prozent des Kaufpreises ausmachen. Diese Summe sollte idealerweise aus Eigenkapital stammen.\n\n4. Objektzustand prüfen: Lassen Sie eine Immobilie vor dem Kauf von einem Sachverständigen begutachten – besonders bei Altbauten. Versteckte Mängel können teuer werden.\n\n5. Schnell entscheiden: Gute Objekte in Düsseldorf sind begehrt. Wer vorbereitet ist, kann schneller handeln und erhält den Zuschlag.\n\nSprechen Sie uns an – Krischer Immobilien begleitet Sie auf dem Weg zu Ihrer Traumimmobilie in Düsseldorf.",
-      "readTime": "4"
-    },
-    {
-      "id": "20260925-454",
-      "date": "25. September 2026",
-      "datetime": "2026-09-25",
-      "category": "Marktbericht",
-      "emoji": "🏙️",
-      "imageUrl": "https://krischerimmo.github.io/Blog/images/marktbericht.jpg",
-      "title": "Wohnungsmarkt Düsseldorf 2026: Was sich Käufer jetzt merken sollten",
-      "excerpt": "Der Düsseldorfer Wohnungsmarkt 2026 im Überblick – Chancen, Risiken und aktuelle Entwicklungen.",
-      "content": "Düsseldorf gehört zu den wirtschaftsstärksten Städten Deutschlands – und das spiegelt sich auch auf dem Immobilienmarkt wider. Die Nachfrage nach Wohnraum übersteigt das Angebot in vielen Lagen deutlich, was zu einer anhaltend stabilen Preisentwicklung führt.\n\nBesonders Heerdt und Bilk verzeichnen eine hohe Nachfrage. Gute Schulen, eine exzellente Infrastruktur und die Nähe zu Arbeitgebern machen diese Lagen für Familien und Berufspendler gleichermaßen attraktiv.\n\nWer in Düsseldorf kaufen möchte, sollte gut vorbereitet sein: Attraktive Objekte werden häufig innerhalb weniger Tage verkauft. Eine Finanzierungszusage der Bank im Vorfeld verschafft entscheidende Vorteile.\n\nFür Investoren bleibt Düsseldorf ein interessanter Standort. Die Mietrenditen sind solide, die Leerstandsquote gering und die Bevölkerungsprognose positiv.\n\nMöchten Sie wissen, was Ihre Immobilie aktuell wert ist oder suchen Sie das passende Objekt in Düsseldorf? Krischer Immobilien steht Ihnen mit fundierter Marktkenntnis und persönlicher Beratung zur Seite. Kontaktieren Sie uns noch heute.",
       "readTime": "4"
     }
   ]
